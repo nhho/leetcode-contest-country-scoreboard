@@ -15,7 +15,6 @@ HTTP_TIMEOUT = 10  # 10 sec
 
 TABLE_HEADERS = ['Rank', 'Name', 'Score']
 
-COUNTRY_FLAG_PATTERN = '/static/flags/%s.gif'
 URL_PATTERN = 'https://leetcode.com/contest/api/ranking/%s/?pagination=%d'
 
 
@@ -23,10 +22,10 @@ def main():
     """Shows the scoreboard"""
     parser = argparse.ArgumentParser()
     parser.add_argument('CONTEST', help='e.g. weekly-contest-101')
-    parser.add_argument('COUNTRY', help='e.g. hk')
+    parser.add_argument('COUNTRY_CODE', help='e.g. HK')
     args = parser.parse_args()
     contest = args.CONTEST
-    country_flag = COUNTRY_FLAG_PATTERN % args.COUNTRY
+    country = args.COUNTRY_CODE
     data = []
     page = 1
     while True:
@@ -45,7 +44,7 @@ def main():
                 done = True
                 break
             for datum in rank:
-                if datum['country_flag'] == country_flag:
+                if datum['country_code'] == country:
                     data.append([datum['rank'], unidecode(datum['username']), datum['score']])
         print 'Loaded %d pages' % (page - 1)
         if done:
