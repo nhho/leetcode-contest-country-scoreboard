@@ -10,7 +10,7 @@ import grequests
 BATCH_SIZE = 10
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                          'AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/69.0.3497.81 Safari/537.36'}
+                         'Chrome/73.0.3683.103 Safari/537.36'}
 HTTP_TIMEOUT = 10  # 10 sec
 
 TABLE_HEADERS = ['Rank', 'Name', 'Score']
